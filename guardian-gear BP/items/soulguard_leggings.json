@@ -20,7 +20,7 @@
       "minecraft:glint": true,
 
       "minecraft:wearable": {
-        "protection": 6,
+        "protection": 35,
         "slot": "slot.armor.legs"
       },
 

@@ -21,7 +21,7 @@
       "minecraft:glint": true,
 
       "minecraft:wearable": {
-        "protection": 3,
+        "protection": 21,
         "slot": "slot.armor.head"
       },
 

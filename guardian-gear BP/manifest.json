@@ -1,18 +1,18 @@
 {
   "format_version": 2,
   "header": {
-    "name": "Guardian Gear v1.2.9 BP",
+    "name": "Guardian Gear v1.3.1 BP",
     "description": "By CrossDarkRix",
-    "uuid": "fb5f576b-3dc9-4ba3-bc28-ca647e991e03",
-    "version": [1, 2, 9],
+    "uuid": "76b1b21c-7c6b-43a3-ad3c-82c02ca722e3",
+    "version": [1, 3, 1],
     "min_engine_version": [1, 20, 80]
   },
   "modules": [
     {
       "type": "script",
       "language": "javascript",
-      "uuid": "226510d1-2410-4ac2-a50e-97a3feb45417",
-      "version": [1, 2, 9],
+      "uuid": "3509d52a-f7dc-48ee-9dfb-b31e61a68a29",
+      "version": [1, 3, 1],
       "entry": "scripts/main.js"
     }
   ],
@@ -22,11 +22,11 @@
       "version": "2.6.0"
     },
 	{
-      "uuid": "17ffa57e-4a29-4675-bd2d-1530b2895324",
+      "uuid": "e45e5734-d648-4110-8118-c88b01a301a4",
       "version": [
         1,
-        2,
-        9
+        3,
+        1
       ]
     }
   ],

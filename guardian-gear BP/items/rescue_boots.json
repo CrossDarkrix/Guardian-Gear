@@ -21,7 +21,7 @@
       "minecraft:glint": true,
 
       "minecraft:wearable": {
-        "protection": 3,
+        "protection": 17,
         "slot": "slot.armor.feet"
       },
 

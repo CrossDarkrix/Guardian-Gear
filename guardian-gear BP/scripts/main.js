@@ -128,8 +128,8 @@ function handleLeggings(player) {
                 block.typeId === "minecraft:soul_soil"
             )
         ) {
-            player.addEffect("speed", 10, {
-                amplifier: 0,
+            player.addEffect("speed", 120, {
+                amplifier: 2,
                 showParticles: false
             });
             if (tick % 20 === 0) {
