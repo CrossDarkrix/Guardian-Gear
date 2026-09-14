@@ -1,0 +1,54 @@
+{
+  "format_version": "1.20.80",
+  "minecraft:item": {
+    "description": {
+      "identifier": "guardian-gear:rescue_boots",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+            "default": "rescue_boots"
+            }
+      },
+
+      "minecraft:display_name": {
+        "value": "Rescue Boots"
+      },
+
+      "minecraft:glint": true,
+
+      "minecraft:wearable": {
+        "protection": 3,
+        "slot": "slot.armor.feet"
+      },
+
+      "minecraft:durability": {
+        "max_durability": 9997
+      },
+
+      "minecraft:enchantable": {
+        "slot": "armor_feet",
+        "value": 25
+      },
+
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": [
+              "minecraft:netherite_ingot"
+            ],
+            "repair_amount": "query.max_durability * 0.25"
+          }
+        ]
+      },
+	  "minecraft:tags": {
+        "tags": [
+            "minecraft:trimmable_armors"
+            ]
+        }
+    }
+  }
+}

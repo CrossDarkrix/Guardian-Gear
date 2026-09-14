@@ -1,0 +1,21 @@
+{
+  "resource_pack_name": "Guardian Gear",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "guardian_helmet": {
+      "textures": "textures/items/guardian_helmet"
+    },
+
+    "barrier_chestplate": {
+      "textures": "textures/items/barrier_chestplate"
+    },
+
+    "soulguard_leggings": {
+      "textures": "textures/items/soulguard_leggings"
+    },
+
+    "rescue_boots": {
+      "textures": "textures/items/rescue_boots"
+    }
+  }
+}

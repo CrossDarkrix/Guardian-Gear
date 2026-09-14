@@ -1,0 +1,20 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "guardian-gear:rescue_boots_recipe"
+    },
+    "tags": [ "crafting_table" ],
+    "pattern": [
+      "D N",
+      "N D"
+    ],
+    "key": {
+      "D": { "item": "minecraft:diamond" },
+      "N": { "item": "minecraft:netherite_ingot" }
+    },
+    "result": {
+      "item": "guardian-gear:rescue_boots"
+    }
+  }
+}

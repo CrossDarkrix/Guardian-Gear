@@ -1,0 +1,54 @@
+{
+  "format_version": "1.20.80",
+  "minecraft:item": {
+    "description": {
+      "identifier": "guardian-gear:barrier_chestplate",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+            "default": "barrier_chestplate"
+            }
+      },
+
+      "minecraft:display_name": {
+        "value": "Barrier Chestplate"
+      },
+
+      "minecraft:glint": true,
+
+      "minecraft:wearable": {
+        "protection": 8,
+        "slot": "slot.armor.chest"
+      },
+
+      "minecraft:durability": {
+        "max_durability": 9997
+      },
+
+      "minecraft:enchantable": {
+        "slot": "armor_torso",
+        "value": 25
+      },
+
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": [
+              "minecraft:netherite_ingot"
+            ],
+            "repair_amount": "query.max_durability * 0.25"
+          }
+        ]
+      },
+	  "minecraft:tags": {
+        "tags": [
+            "minecraft:trimmable_armors"
+            ]
+        }
+    }
+  }
+}

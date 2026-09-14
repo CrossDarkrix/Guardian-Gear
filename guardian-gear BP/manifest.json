@@ -1,0 +1,36 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Guardian Gear v1.2.9 BP",
+    "description": "By CrossDarkRix",
+    "uuid": "fb5f576b-3dc9-4ba3-bc28-ca647e991e03",
+    "version": [1, 2, 9],
+    "min_engine_version": [1, 20, 80]
+  },
+  "modules": [
+    {
+      "type": "script",
+      "language": "javascript",
+      "uuid": "226510d1-2410-4ac2-a50e-97a3feb45417",
+      "version": [1, 2, 9],
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "2.6.0"
+    },
+	{
+      "uuid": "17ffa57e-4a29-4675-bd2d-1530b2895324",
+      "version": [
+        1,
+        2,
+        9
+      ]
+    }
+  ],
+  "metadata": {
+    "product_type": "addon"
+  }
+}
