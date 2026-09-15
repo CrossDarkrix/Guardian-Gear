@@ -59,7 +59,23 @@ function hasFullSet(player) {
 */
 function handleHelmet(player) {
     const head = getHead(player);
+    const dimension = player.dimension;
+    const pos = player.location;
+    const time = world.getTimeOfDay();
 
+    const light = dimension.getLightLevel({
+        x: Math.floor(pos.x),
+        y: Math.floor(pos.y),
+        z: Math.floor(pos.z)
+    });
+    const skyLight = dimension.getSkyLightLevel({
+        x: Math.floor(pos.x),
+        y: Math.floor(pos.y),
+        z: Math.floor(pos.z)
+    });
+    const isNight = time >= 13000 && time <= 23000;
+    const isDark = light <= 7 || skyLight <= 4;
+	const isUnderGround = player.location.y < 50;
     if (head?.typeId !== HELMET_ID)
         return;
 
@@ -73,9 +89,8 @@ function handleHelmet(player) {
             }
         }
 
-        const time = world.getTimeOfDay();
         if (tick % 25 === 0) {
-            if (time >= 13000 && time <= 23000) {
+            if (isNight || (isUnderGround && isDark)) {
                 player.addEffect("night_vision", 500, {
                     amplifier: 0,
                     showParticles: false
@@ -344,11 +359,17 @@ world.beforeEvents.entityHurt.subscribe((event) => {
         event.damageSource.cause === "projectile"
     ) {
         event.cancel = true;
-
         try {
-            for (let i = 0; i < 3; i++) {
+            player.dimension.playSound("random.anvil_land", {
+                        x: player.location.x,
+                        y: player.location.y,
+                        z: player.location.z
+            });
+        } catch {}
+        try {
+            for (let i = 0; i < 8; i++) {
                 player.dimension.spawnParticle(
-                    "minecraft:electric_spark_particle",
+                    "minecraft:trial_spawner_detection",
                     {
                         x: player.location.x + (Math.random() - 0.5) * 0.6,
                         y: player.location.y + 1.0,
@@ -419,7 +440,7 @@ world.beforeEvents.entityHurt.subscribe((event) => {
             try {
                 for (let i = 0; i < 8; i++) {
                     player.dimension.spawnParticle(
-                        "minecraft:soul_fire_flame_particle",
+                        "minecraft:trial_spawner_detection",
                         {
                             x: player.location.x +
                                 (Math.random() - 0.5) * 0.6,

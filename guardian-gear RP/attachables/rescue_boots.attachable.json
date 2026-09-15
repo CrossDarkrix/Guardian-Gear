@@ -5,11 +5,13 @@
       "identifier": "guardian-gear:rescue_boots",
 
       "materials": {
-        "default": "armor"
+        "default": "armor",
+        "enchanted": "armor_enchanted"
       },
 
       "textures": {
-        "default": "textures/models/armor/guardian_layer_1"
+        "default": "textures/models/armor/guardian_layer_1",
+        "enchanted": "textures/misc/enchanted_item_glint"
       },
 
       "geometry": {
