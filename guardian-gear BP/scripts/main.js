@@ -112,20 +112,13 @@ function handleLeggings(player) {
     try {
         if (player.getEffect("wither")) {
             player.removeEffect("wither");
+            system.run(() => {
             try {
                 for (let i = 0; i < 5; i++) {
-                    player.dimension.spawnParticle(
-                        "minecraft:soul_particle",
-                        {
-                            x: player.location.x +
-                                (Math.random() - 0.5) * 0.5,
-                            y: player.location.y + 1,
-                            z: player.location.z +
-                                (Math.random() - 0.5) * 0.5
-                        }
-                    );
+                    player.runCommand(`particle minecraft:soul_particle ${player.location.x + (Math.random() - 0.5) * 0.5} ${player.location.y + 1} ${player.location.z + (Math.random() - 0.5) * 0.5}`);
                 }
             } catch {}
+            });
         }
     } catch {}
 
@@ -147,18 +140,13 @@ function handleLeggings(player) {
                 amplifier: 2,
                 showParticles: false
             });
+            system.run(() => {
             if (tick % 20 === 0) {
                 try {
-                    player.dimension.spawnParticle(
-                        "minecraft:soul_particle",
-                        {
-                            x: player.location.x,
-                            y: player.location.y + 0.1,
-                            z: player.location.z
-                        }
-                    );
+                    player.runCommand(`particle minecraft:soul_particle ${player.location.x} ${player.location.y + 0.1} ${player.location.z}`);
                 } catch {}
             }
+            });
         }
     } catch {}
 }
@@ -269,18 +257,13 @@ function placeRescueGlass(player) {
 function handleSetBonus(player) {
     if (!hasFullSet(player))
         return;
+    system.run(() => {
     if (tick % 100 === 0) {
         try {
-            player.dimension.spawnParticle(
-                "minecraft:totem_particle",
-                {
-                    x: player.location.x,
-                    y: player.location.y + 1,
-                    z: player.location.z
-                }
-            );
+            player.runCommand(`particle minecraft:totem_particle ${player.location.x} ${player.location.y + 1} ${player.location.z}`);
         } catch {}
     }
+    });
     try {
         player.addEffect("resistance", 40, {
             amplifier: 0,
@@ -295,8 +278,12 @@ function handleSetBonus(player) {
 function handleFireBarrier(player) {
     const expire =
         Number(player.getDynamicProperty("fire_barrier_until")) || 0;
-
-    if (expire <= tick)
+    const chest = getChest(player);
+	if (chest?.typeId !== CHEST_ID) {
+        player.setDynamicProperty("fire_barrier_until", 0);
+        return;
+    }
+    if (Date.now() >= expire)
         return;
 
     try {
@@ -359,25 +346,16 @@ world.beforeEvents.entityHurt.subscribe((event) => {
         event.damageSource.cause === "projectile"
     ) {
         event.cancel = true;
+        system.run(() => {
         try {
-            player.dimension.playSound("random.anvil_land", {
-                        x: player.location.x,
-                        y: player.location.y,
-                        z: player.location.z
-            });
+            player.runCommand(`playsound random.anvil_land @s ${player.location.x} ${player.location.y} ${player.location.z}`);
         } catch {}
         try {
             for (let i = 0; i < 8; i++) {
-                player.dimension.spawnParticle(
-                    "minecraft:trial_spawner_detection",
-                    {
-                        x: player.location.x + (Math.random() - 0.5) * 0.6,
-                        y: player.location.y + 1.0,
-                        z: player.location.z + (Math.random() - 0.5) * 0.6
-                    }
-                );
+                player.runCommand(`particle minecraft:endrod ${player.location.x} ${player.location.y + 1} ${player.location.z}`);
             }
         } catch {}
+        });
         return;
     }
 
@@ -392,23 +370,16 @@ world.beforeEvents.entityHurt.subscribe((event) => {
             cause === "lava" ||
             cause === "fireTick"
         ) {
+            system.run(() => {
             try {
                 for (let i = 0; i < 10; i++) {
-                    player.dimension.spawnParticle(
-                        "minecraft:totem_particle",
-                        {
-                            x: player.location.x +
-                                (Math.random() - 0.5),
-                            y: player.location.y + 1,
-                            z: player.location.z +
-                                (Math.random() - 0.5)
-                        }
-                    );
+                    player.runCommand(`particle minecraft:totem_particle ${player.location.x} ${player.location.y + 1} ${player.location.z}`);
                 }
             } catch {}
+            });
             player.setDynamicProperty(
                 "fire_barrier_until",
-                tick + 200
+                Date.now() + 10000
             );
 
             event.cancel = true;
@@ -420,7 +391,7 @@ world.beforeEvents.entityHurt.subscribe((event) => {
                 player.getDynamicProperty("fire_barrier_until")
             ) || 0;
 
-        if (tick < fireBarrierUntil) {
+        if (Date.now() < fireBarrierUntil) {
             event.cancel = true;
             return;
         }
@@ -436,21 +407,13 @@ world.beforeEvents.entityHurt.subscribe((event) => {
             attacker?.typeId === "minecraft:wither_skeleton"
         ) {
             event.cancel = true;
-
+            system.run(() => {
             try {
                 for (let i = 0; i < 8; i++) {
-                    player.dimension.spawnParticle(
-                        "minecraft:trial_spawner_detection",
-                        {
-                            x: player.location.x +
-                                (Math.random() - 0.5) * 0.6,
-                            y: player.location.y + 1,
-                            z: player.location.z +
-                                (Math.random() - 0.5) * 0.6
-                        }
-                    );
+                    player.runCommand(`particle minecraft:trial_spawner_detection ${player.location.x} ${player.location.y + 1} ${player.location.z}`);
                 }
             } catch {}
+            });
         }
     }
 });
